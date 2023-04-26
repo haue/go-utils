@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"image"
 	"image/jpeg"
+	_ "image/png"
 )
 
 func CompressImageBytes(imgBytes []byte, quality int) ([]byte, error) {

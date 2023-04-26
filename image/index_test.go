@@ -14,7 +14,10 @@ func TestCompressImageBytes(t *testing.T) {
 	}
 	input, _ := os.ReadFile(filePath)
 	if len(input) > (1 << 20) {
-		output, _ := CompressImageBytes(input, 50)
+		output, err := CompressImageBytes(input, 50)
+		if err != nil {
+			fmt.Println(err)
+		}
 		os.WriteFile("compressed.jpg", output, 0644)
 	}
 	fmt.Println("Image compression completed.")
