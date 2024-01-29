@@ -1,4 +1,4 @@
-module github.com/haue/go-utils
+module zhangzongye.cn/haue/go-utils
 
 go 1.20
 
