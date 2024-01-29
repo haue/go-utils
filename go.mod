@@ -1,4 +1,4 @@
-module zhangzongye.cn/haue/go-utils
+module zhangzongye.cn/framework/go-utils
 
 go 1.20
 
