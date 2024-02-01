@@ -6,7 +6,7 @@ import (
 )
 
 func TestIdGen(t *testing.T) {
-	id, err := IdGen()
+	id, err := Id()
 	if err != nil {
 		t.Error(err)
 		return
