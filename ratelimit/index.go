@@ -51,7 +51,7 @@ func init() {
 	}
 }
 
-func check(ruleName string, id string) bool {
+func Check(ruleName string, id string) bool {
 	rule := rules[ruleName]
 	return rule.AllowVisit(id)
 }
