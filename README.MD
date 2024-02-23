@@ -4,18 +4,17 @@
 
 使用：
 
-1. config.yaml中添加以下示例节点
+1. config.yaml 中添加以下示例节点
 
    ```
    ratelimit:
-     - name: test
-       rules:
-         - seconds: 60
-           times: 20
-         - seconds: 3600
-           times: 200
-         - seconds: 86400
-           times: 400
+     test:
+       - seconds: 60
+         times: 20
+       - seconds: 3600
+         times: 200
+       - seconds: 86400
+         times: 400
    ```
 
 2. 示例
@@ -33,5 +32,3 @@
      }
    }
    ```
-
-   

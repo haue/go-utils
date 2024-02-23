@@ -13,38 +13,32 @@ type PeriodTimes struct {
 	Seconds int
 	Times   int
 }
-type RuleConfig struct {
-	Name  string
-	Rules []PeriodTimes
-}
 
 var (
-	config []RuleConfig
-	rules  map[string]*ratelimit.Rule
+	rules map[string]*ratelimit.Rule = make(map[string]*ratelimit.Rule)
 )
 
 func init() {
-	rules = make(map[string]*ratelimit.Rule)
+	rulesConfig := make(map[string][]PeriodTimes)
 	viper.AddConfigPath("./")
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	if err := viper.ReadInConfig(); err != nil {
 		fmt.Printf("Fatal error resources file: %s \n", err.Error())
 	}
-	if err := viper.UnmarshalKey("ratelimit", &config); err != nil {
+	if err := viper.UnmarshalKey("ratelimit", &rulesConfig); err != nil {
 		fmt.Printf("unable to decode into struct %s \n", err.Error())
 	}
 	viper.OnConfigChange(func(e fsnotify.Event) {
 		fmt.Println("Config file changed:", e.Name)
-		if err := viper.UnmarshalKey("ratelimit", &config); err != nil {
+		if err := viper.UnmarshalKey("ratelimit", &rulesConfig); err != nil {
 			fmt.Printf("unable to decode into struct %s \n", err.Error())
 		}
 	})
 	viper.WatchConfig()
-	for _, item := range config {
+	for name, item := range rulesConfig {
 		rule := ratelimit.NewRule()
-		name := item.Name
-		for _, item2 := range item.Rules {
+		for _, item2 := range item {
 			rule.AddRule(time.Second*time.Duration(item2.Seconds), item2.Times)
 		}
 		rules[name] = rule
