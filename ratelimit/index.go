@@ -49,3 +49,6 @@ func Check(ruleName string, id string) bool {
 	rule := rules[ruleName]
 	return rule.AllowVisit(id)
 }
+func GetRule(ruleName string) *ratelimit.Rule {
+	return rules[ruleName]
+}

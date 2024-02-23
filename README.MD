@@ -22,9 +22,9 @@
    ```
    id := "aa"
    ruleName := "test"
-   rule := rules[ruleName]
+   rule := GetRule[ruleName]
    for i := 0; i <= 20; i++ {
-     allow := check(ruleName, id)
+     allow := Check(ruleName, id)
      if !allow {
        log.Println("访问量超出,其剩余访问次数情况如下:", rule.RemainingVisits(id))
      } else {
