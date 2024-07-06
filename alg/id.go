@@ -6,9 +6,14 @@ import (
 
 var node *snowflake.Node
 
+/*
++--------------------------------------------------------------------------+
+| 1 Bit Unused | 41 Bit Timestamp |  10 Bit NodeID  |   12 Bit Sequence ID |
++--------------------------------------------------------------------------+
+*/
 func init() {
 	snowflake.NodeBits = 1
-	snowflake.Epoch = 1681987346000
+	snowflake.Epoch = 1720257757000
 	snowflake.StepBits = 10
 	n, err := snowflake.NewNode(0)
 	if err != nil {

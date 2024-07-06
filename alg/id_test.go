@@ -6,10 +6,12 @@ import (
 )
 
 func TestIdGen(t *testing.T) {
-	id, err := Id()
-	if err != nil {
-		t.Error(err)
-		return
+	for i := 0; i < 100; i++ {
+		id, err := Id()
+		if err != nil {
+			t.Error(err)
+			return
+		}
+		fmt.Printf("%d\n", id)
 	}
-	fmt.Printf("%d\n", id)
 }
