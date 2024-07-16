@@ -28,7 +28,7 @@ func Id() (int64, error) {
 	id := node.Generate()
 	return id.Int64(), nil
 }
-func Sid() (string, error) {
+func Sid() string {
 	id := node.Generate()
-	return id.String(), nil
+	return id.String()
 }
